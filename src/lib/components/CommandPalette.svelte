@@ -16,6 +16,7 @@
 
 	export let commands: commands = [];
 	export let placeholder: string = 'Search for an action';
+	export let paletteTitle: string = 'Command Palette';
 
 	// style classes
 
@@ -29,6 +30,7 @@
 	export let subtitleClass: className = null;
 	export let descriptionClass: className = null;
 	export let keyboardButtonClass: className = null;
+	export let paletteTitleClass: className = null;
 	export let unstyled = false;
 
 	// style props (convert to css)
@@ -43,6 +45,7 @@
 	export let subtitleStyle: Properties = {};
 	export let descriptionStyle: Properties = {};
 	export let keyboardButtonStyle: Properties = {};
+	export let paletteTitleStyle: Properties = {};
 
 	let wrapperElement: HTMLDivElement;
 	let searchInputRef: HTMLInputElement;
@@ -253,6 +256,11 @@
 					style={toCssString(paletteWrapperInnerStyle)}
 					bind:this={commandPaletteRef}
 				>
+					<header>
+						<h2 class={paletteTitleClass} style={toCssString(paletteTitleStyle)}>
+							{paletteTitle}
+						</h2>
+					</header>
 					<form autocomplete="off" role="search" novalidate on:submit={(ev) => ev.preventDefault()}>
 						<label for={searchInputId}>Search for an action</label>
 						<input
